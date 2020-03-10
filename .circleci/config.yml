@@ -1,6 +1,7 @@
 version: 2
 jobs:
   test:
+   build:
     docker:
       - image: google/cloud-sdk
     working_directory: ~/hello
