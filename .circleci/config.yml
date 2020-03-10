@@ -1,36 +1,6 @@
 version: 2
 jobs:
-  one:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A first hello"
-      - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
-      - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory
-          root: my_workspace
-          # Must be relative path from root
-          paths:
-            - echo-output      
-  two:
-    docker:
-      - image: circleci/ruby:2.4.1
-    steps:
-      - checkout
-      - run: echo "A more familiar hi"  
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: my_workspace
-
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked! yar this is done by santhosh";
-          else
-            echo "Nope!"; exit 1
-          fi
-  three: 
+  Terraform_infra: 
      docker:
         - image: hashicorp/terraform:light
      steps:
@@ -44,17 +14,9 @@ jobs:
        - run: terraform validate
        - run: echo "check the terraform plan" 
        - run: terraform plan
-       - run: |
-             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-             unzip awscliv2.zip
-             sudo ./aws/install
-       - run: aws --version     
+        
 workflows:
   version: 2
   one_and_two:
     jobs:
-      - one
-      - two:
-          requires:
-            - one
-      - three
+      - terraform_infra
