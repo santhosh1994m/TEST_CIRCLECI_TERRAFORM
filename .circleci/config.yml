@@ -32,7 +32,7 @@ jobs:
           fi
   three: 
      docker:
-        - image: dwmkerr/terraform-ci
+        - image: hashicorp/terraform:light
      steps:
        - checkout
        - run: echo "check the terraform vesrion" 
