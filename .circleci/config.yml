@@ -1,11 +1,8 @@
 version: 2
-jobs:
-  test:
-    docker:
-      - image: hashicorp/terraform
-    working_directory: ~/porch-guru
-    steps:
-      - checkout
-      - run:
-          name: Initialize Terraform
-          command: terraform init
+ jobs:
+   build:
+     docker:
+       - image: circleci/ruby:2.4.1
+     steps:
+       - checkout
+       - run: echo "A first hello"
