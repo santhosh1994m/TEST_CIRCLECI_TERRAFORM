@@ -34,7 +34,7 @@ jobs:
      docker:
         - image: dwmkerr/terraform-ci
      steps:
-       -checkout
+       - checkout
        - run: echo "check the terraform vesrion" 
        - run: terraform -v
 workflows:
