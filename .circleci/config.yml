@@ -30,7 +30,13 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
-      - run: terraform -v
+  three: 
+     docker:
+        - image: dwmkerr/terraform-ci
+     steps:
+       -checkout
+       - run: echo "check the terraform vesrion" 
+       - run: terraform -v
 workflows:
   version: 2
   one_and_two:
@@ -39,3 +45,4 @@ workflows:
       - two:
           requires:
             - one
+      - three
