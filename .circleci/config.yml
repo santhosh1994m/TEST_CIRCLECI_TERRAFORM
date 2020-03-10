@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  Terraform_infra: 
+  terraform_infra: 
      docker:
         - image: hashicorp/terraform:light
      steps:
