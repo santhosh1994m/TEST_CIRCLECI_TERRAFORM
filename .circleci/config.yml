@@ -1,9 +1,8 @@
 version: 2
- jobs:
-   build:
-     docker:
-       - image: circleci/ruby:2.4.1
-     working_directory: ~/santhosh
-     steps:
-       - checkout
-       - run: echo "A first hello"
+jobs:
+  test:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: ~/hello
+    steps:
+      - checkout
