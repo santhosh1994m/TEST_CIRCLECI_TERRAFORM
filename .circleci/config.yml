@@ -37,6 +37,13 @@ jobs:
        - checkout
        - run: echo "check the terraform vesrion" 
        - run: terraform -v
+       - run: ls
+        - run: echo "check the terraform initializing " 
+       - run: terraform init
+        - run: echo "check the terraform validate" 
+       - run: terraform validate
+        - run: echo "check the terraform plan" 
+       - run: terraform plan
 workflows:
   version: 2
   one_and_two:
