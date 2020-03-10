@@ -44,6 +44,7 @@ jobs:
        - run: terraform validate
        - run: echo "check the terraform plan" 
        - run: terraform plan
+       - run: aws --version
 workflows:
   version: 2
   one_and_two:
